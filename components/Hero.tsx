@@ -1,8 +1,8 @@
 import Image from 'next/image';
 
-export default function Hero() {
+export default function Hero({ children }: { children?: React.ReactNode }) {
   return (
-    <div className="w-full">
+    <div className="relative w-full">
       <Image
         src="/taltos-banner.png"
         alt="Taltos Banner"
@@ -11,6 +11,12 @@ export default function Hero() {
         priority
         className="object-cover w-full h-auto"
       />
+      {/* Overlay Content */}
+      {children && (
+        <div className="absolute inset-0 flex items-center justify-center">
+          {children}
+        </div>
+      )}
     </div>
   );
 }
